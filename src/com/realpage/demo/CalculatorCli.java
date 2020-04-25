@@ -75,6 +75,62 @@ public class CalculatorCli {
 						break;
 
 					// -------------------------
+					// Advanced Operations
+
+					case "POW":
+					case "EXP":
+					case "EXPONENT":
+						CalculatorOperations.exp(stack);
+						break;
+
+					case "E":
+					case "SCI":
+						CalculatorOperations.sci(stack);
+						break;
+
+					case "%":
+					case "MOD":
+					case "MODULO":
+						CalculatorOperations.modulo(stack);
+						break;
+
+					// -------------------------
+					// Single parameter operations
+
+					case "ABS":
+					case "ABSOLUTE VALUE":
+						CalculatorOperations.abs(stack);
+						break;
+
+					case "SQRT":
+					case "SQUARE ROOT":
+						CalculatorOperations.sqrt(stack);
+						break;
+
+					case "CBRT":
+					case "CUBE ROOT":
+						CalculatorOperations.cbrt(stack);
+						break;
+
+					case "CEIL":
+					case "CEILING":
+						CalculatorOperations.ceil(stack);
+						break;
+
+					case "FLOOR":
+						CalculatorOperations.floor(stack);
+						break;
+
+					// -------------------------
+					// "Full Stack" operations
+
+					case "AVG":
+					case "AVERAGE":
+					case "MEAN":
+						CalculatorOperations.average(stack);
+						break;
+
+					// -------------------------
 					// Utility operators
 
 					case "C":

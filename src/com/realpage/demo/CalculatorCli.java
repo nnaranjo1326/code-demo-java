@@ -42,7 +42,7 @@ public class CalculatorCli {
 		Scanner keyboard = new Scanner(System.in);
 		Stack<Double> stack = new Stack<>();
 
-		while (true) {
+		while (keyboard.hasNext()) {
 
 			String input = keyboard.nextLine();
 
@@ -146,7 +146,7 @@ public class CalculatorCli {
 						break;
 
 					case "":
-						continue;
+						break;
 
 					// -------------------------
 					// Numeric entry or bad input
@@ -166,8 +166,8 @@ public class CalculatorCli {
 						break;
 				}
 
-			} catch (IllegalArgumentException ex) {
-				System.err.println("Invalid command \"" + input + "\". " + ex.getMessage());
+			} catch (Exception ex) {
+				System.err.println("Invalid command \"" + input + "\" - " + ex.getMessage());
 			}
 
 			System.out.println(getStackStateString(stack));

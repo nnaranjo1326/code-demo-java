@@ -50,6 +50,12 @@ public class CalculatorOperations {
 		validateStackSize(stack, "division", 2);
 
 		Double d2 = stack.pop();
+
+		if (d2 == 0) {
+			stack.push(d2);
+			throw new IllegalStateException("Please do not attempt to divide by zero");
+		}
+
 		Double d1 = stack.pop();
 
 		stack.push(d1 / d2);

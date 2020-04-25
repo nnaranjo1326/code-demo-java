@@ -51,18 +51,26 @@ public class CalculatorCli {
 				switch (input.toUpperCase()) {
 
 					case "+":
+					case "ADD":
 						CalculatorOperations.add(stack);
 						break;
 
 					case "-":
+					case "SUB":
+					case "SUBTRACT":
 						CalculatorOperations.subtract(stack);
 						break;
 
 					case "/":
+					case "DIV":
+					case "DIVIDE":
 						CalculatorOperations.divide(stack);
 						break;
 
 					case "*":
+					case "X":
+					case "MULT":
+					case "MULTIPLY":
 						CalculatorOperations.multiply(stack);
 						break;
 
@@ -70,6 +78,8 @@ public class CalculatorCli {
 					// Utility operators
 
 					case "C":
+					case "CLR":
+					case "CLEAR":
 						stack.clear();
 						break;
 

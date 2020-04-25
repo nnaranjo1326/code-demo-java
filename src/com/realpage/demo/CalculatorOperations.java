@@ -56,6 +56,7 @@ public class CalculatorOperations {
 	}
 
 	// --------------------------------------------------
+	// Advanced Operations
 
 	public static void modulo(Stack<Double> stack) {
 

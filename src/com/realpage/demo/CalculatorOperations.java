@@ -69,6 +69,12 @@ public class CalculatorOperations {
 		validateStackSize(stack, "modulo", 2);
 
 		Double d2 = stack.pop();
+
+		if (d2 == 0) {
+			stack.push(d2);
+			throw new IllegalStateException("Please do not attempt to divide by zero");
+		}
+
 		Double d1 = stack.pop();
 
 		stack.push(d1 % d2);
@@ -87,6 +93,10 @@ public class CalculatorOperations {
 
 		validateStackSize(stack, "square root", 1);
 
+		if (stack.peek() < 0) {
+			throw new IllegalStateException("Please do not attempt to take the root of a negative number");
+		}
+
 		Double d1 = stack.pop();
 
 		stack.push(Math.sqrt(d1));
@@ -95,6 +105,10 @@ public class CalculatorOperations {
 	public static void cbrt(Stack<Double> stack) {
 
 		validateStackSize(stack, "cube root", 1);
+
+		if (stack.peek() < 0) {
+			throw new IllegalStateException("Please do not attempt to take the root of a negative number");
+		}
 
 		Double d1 = stack.pop();
 

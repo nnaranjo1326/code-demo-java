@@ -1,5 +1,7 @@
 package com.realpage.demo;
 
+import java.io.InputStream;
+import java.io.PrintStream;
 import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Scanner;
@@ -35,11 +37,9 @@ public class CalculatorCli {
 		return builder.toString();
 	}
 
-	// --------------------------------------------------
+	public static void execCalculator(InputStream in, PrintStream out, PrintStream err) {
 
-	public static void main(String[] args) {
-
-		Scanner keyboard = new Scanner(System.in);
+		Scanner keyboard = new Scanner(in);
 		Stack<Double> stack = new Stack<>();
 
 		while (keyboard.hasNext()) {
@@ -140,10 +140,9 @@ public class CalculatorCli {
 						break;
 
 					case "Q":
-						System.out.println("Goodbye");
+						out.println("Goodbye");
 						keyboard.close();
-						System.exit(0);
-						break;
+						return;
 
 					case "":
 						break;
@@ -159,7 +158,7 @@ public class CalculatorCli {
 							stack.push(number);
 
 						} catch (Exception ex) {
-							System.err.println(
+							err.println(
 									"Unknown command \"" + input + "\". Please refer to the documentation for a list of accepted inputs.");
 						}
 
@@ -167,10 +166,19 @@ public class CalculatorCli {
 				}
 
 			} catch (Exception ex) {
-				System.err.println("Invalid command \"" + input + "\" - " + ex.getMessage());
+				err.println("Invalid command \"" + input + "\" - " + ex.getMessage());
 			}
 
-			System.out.println(getStackStateString(stack));
+			out.println(getStackStateString(stack));
 		}
+
+	}
+
+	// --------------------------------------------------
+
+	public static void main(String[] args) {
+
+		execCalculator(System.in, System.out, System.err);
+
 	}
 }

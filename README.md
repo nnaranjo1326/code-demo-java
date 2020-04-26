@@ -59,6 +59,8 @@ Part of the architecture I implemented was getting the stream reader that handle
 
 I could have also added some operations like `MIN`, `MAX`, and `MEDIAN` to accompany `AVERAGE` in taking up the whole stack but I didn't consider them at the time.
 
+Additionally, while I did have time to hit 100% code coverage with the calculator operations unit tests and as much as possible with the tests for the calculator object, I did not have time to figure out why jUnit 5 refused to run the test suite I put together. I would have preferred to be able to run all tests at once instead of individually.
+
 #### What best practices would you like to highlight as important?
 
 - Any method or variable should be private unless it needs to be public.
@@ -85,7 +87,7 @@ From the outside in the layers of the program look something like this:
   - Each static method encapsulates only one operation
   - Each method checks the provided stack to ensure an appropriate length and will throw an exception if the check fails.
   
-There are many philosophies for how to write software but I favor adaptability and relevance. My primary focus is how am I meeting the requirements of the application and how easily can I adapt this. Be it either adding new functionality or allowing for consumption by many different applications, I like to keep the future in view. 
+There are many philosophies for how to write software but I favor adaptability and relevance. My primary focus is how am I meeting the requirements of the application and how easily can I adapt this. Be it either adding new functionality or allowing for consumption by many different applications, I like to keep the future in view. It goes without saying that robustness of the application is always a high priority as well.
 
 The way I laid out the command processor with a switch statement and the static methods means that to add a new command all you need to do is code a static method that takes in a stack and add two lines to the switch statement. Adding a new command alias is only a one line change, as simple as can be. 
 

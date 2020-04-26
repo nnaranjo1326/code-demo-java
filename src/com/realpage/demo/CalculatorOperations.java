@@ -334,8 +334,16 @@ public class CalculatorOperations {
 	private static void validateStackSize(Stack<?> stack, String operation, int requiredEntries) {
 
 		if (stack.size() < requiredEntries) {
-			throw new IllegalArgumentException("Unable to execute " + operation
-					+ " operation due to insufficient parameters. This operation requires at least " + requiredEntries + " parameters.");
+			String message = "Unable to execute " + operation
+					+ " operation due to insufficient parameters. This operation requires at least " + requiredEntries;
+
+			if (requiredEntries == 1) {
+				message = message + " parameter.";
+			} else {
+				message = message + " parameters.";
+			}
+
+			throw new IllegalArgumentException(message);
 		}
 	}
 

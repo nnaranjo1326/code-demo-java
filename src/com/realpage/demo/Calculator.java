@@ -12,10 +12,23 @@ public class Calculator {
 	 * decimal point in the parameter represents a decimal place that will be
 	 * present in the final result.
 	 */
-	private static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.###");
+	public static final DecimalFormat DECIMAL_FORMAT = new DecimalFormat("#.###");
 
+	/**
+	 * The stack containing all current entries in the calculator
+	 */
 	private final Stack<Double> stack = new Stack<>();
 
+	/**
+	 * This method accepts a single command and takes the appropriate action on
+	 * the stack. It takes either a valid alias for a calculator operation or a
+	 * numeric value. Any other input will be rejected and an exception will be
+	 * thrown.
+	 * 
+	 * @param input
+	 *           The alias for the operation to be executed by the calculator or
+	 *           a number to be loaded on the stack.
+	 */
 	public void processCommand(String input) {
 
 		switch (input.toUpperCase()) {
@@ -31,12 +44,6 @@ public class Calculator {
 				CalculatorOperations.subtract(this.stack);
 				break;
 
-			case "/":
-			case "DIV":
-			case "DIVIDE":
-				CalculatorOperations.divide(this.stack);
-				break;
-
 			case "*":
 			case "X":
 			case "MULT":
@@ -44,10 +51,17 @@ public class Calculator {
 				CalculatorOperations.multiply(this.stack);
 				break;
 
+			case "/":
+			case "DIV":
+			case "DIVIDE":
+				CalculatorOperations.divide(this.stack);
+				break;
+
 			// -------------------------
 			// Advanced Operations
 
 			case "POW":
+			case "POWER":
 			case "EXP":
 			case "EXPONENT":
 				CalculatorOperations.exp(this.stack);
@@ -68,17 +82,17 @@ public class Calculator {
 			// Single parameter operations
 
 			case "ABS":
-			case "ABSOLUTE VALUE":
+			case "ABSOLUTE_VALUE":
 				CalculatorOperations.abs(this.stack);
 				break;
 
 			case "SQRT":
-			case "SQUARE ROOT":
+			case "SQUARE_ROOT":
 				CalculatorOperations.sqrt(this.stack);
 				break;
 
 			case "CBRT":
-			case "CUBE ROOT":
+			case "CUBE_ROOT":
 				CalculatorOperations.cbrt(this.stack);
 				break;
 
@@ -159,6 +173,14 @@ public class Calculator {
 		this.stack.addAll(backup);
 	}
 
+	/**
+	 * Provides a string representation of the current contents of the stack with
+	 * the elements arrayed left to right in order from deepest to most shallow.
+	 * The elements are separated by a '|' character and the entire string is
+	 * bracketed with '[]'.
+	 * 
+	 * @return The string representation of the stack.
+	 */
 	public String getStackStateString() {
 
 		StringBuilder builder = new StringBuilder("[");

@@ -5,6 +5,15 @@ import java.io.PrintStream;
 import java.util.Scanner;
 import java.util.Stack;
 
+/**
+ * This class provides a runnable CLI interface that makes use of the
+ * {@link Calculator} class. This class handles the reading of commands from the
+ * provided streams as well as handling the tokenizing of multiple inline
+ * commands. The program will terminate on receiving a Q command or when the
+ * stream reaches an EOF.
+ * 
+ * @author Nicolas Naranjo
+ */
 public class CalculatorCli {
 
 	public static void execCalculator(InputStream in, PrintStream out, PrintStream err) {
@@ -61,8 +70,6 @@ public class CalculatorCli {
 
 		keyboard.close();
 	}
-
-	// --------------------------------------------------
 
 	public static void main(String[] args) {
 		execCalculator(System.in, System.out, System.err);
